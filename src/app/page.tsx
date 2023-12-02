@@ -1,28 +1,38 @@
-export default function Home() {
+"use client";
+import { useState } from "react";
+
+export default function Counter() {
+  const [counter, setCounter] = useState(15);
+
+  const addValue = () => {
+    setCounter(counter + 1);
+  };
+  const removeValue = () => {
+    setCounter(counter - 1);
+  };
+
   return (
-    <div className="">
-      <p
-        className="flex flex-col justify-center 
-         bg-slate-200 m-10 p-10 items-center
-       font-bold text-red-500 hover:text-red-600
-       text-4xl"
-      >
-        Hello there!
-      </p>
-      <h3
-        className="flex flex-col justify-center 
-         bg-slate-200 m-5 p-6 items-center
-       font-bold text-red-500 hover:text-red-600
-       text-4xl"
-      >
-        Nice to meet you
-      </h3>
+    <div className="flex flex-col items-center m-8 p-16">
+      <h1 className="text-2xl font-bold">Chai aur Code !</h1>
+      <h2 className="text-2xl font-bold">Counter collection: {counter}</h2>
       <button
-        className="border border-gray-400 bg-red-950
-       text-black m-5 p-2 font-bold"
+        className="border border-gray-500
+      bg-slate-500 m-3 p-2"
+        onClick={addValue}
+        disabled={counter >= 20}
       >
-        Click me Love
+        Add Value {counter}
       </button>
+      <br />
+      <button
+        className="border border-gray-500
+         bg-slate-500 m-3 p-2"
+        onClick={removeValue}
+        disabled={0 >= counter}
+      >
+        Remove Value {counter}
+      </button>
+      <p className="text-2xl font-bold">footer: {counter}</p>
     </div>
   );
 }
